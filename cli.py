@@ -13,8 +13,16 @@ def read_user_cli_args():
         "--urls",
         metavar="URLs",
         nargs="+",
-        type = str,
+        type=str,
         default=[],
-        help="Input desired URLs"
+        help="Input desired URLs",
+    )
+    parser.add_argument(
+        "-f",
+        "--input-file",
+        metavar="FILE",
+        type=str,
+        default="",
+        help="File URLs parser",
     )
     return parser.parse_args()

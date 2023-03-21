@@ -2,7 +2,8 @@
 
 import sys
 import pathlib
-from .cli import read_user_cli_args
+from .cli import read_user_cli_args, display_check_result
+from .checker import site_iko_online
 
 """The python file provisions the 'Glue' code"""
 """The __main__.py file is the Entry-Point Script
@@ -15,7 +16,7 @@ def main():
     if not urls:
         print("Error: no URLs to check", file=sys.stderr)
         sys.exit(1)
-    the_sychronous_check(urls)
+    the_synchronous_check(urls)
 
 def get_website_urls(user_args):
     urls = user_args.urls
@@ -35,6 +36,20 @@ def read_urls_from_file(file):
     else:
         print("Error: Input File Not Found", file=sys.stderr)
     return []
+
+def the_synchronous_check(urls):
+    for url in urls:
+        error = ""
+        try:
+            result = site_iko_online(url)
+        except Exception as e:
+            result = False
+            error = str(e)
+        display_check_result(result=result, url=url, error=error)
+        
+
+if __name__ == "__main__":
+    main()
             
     
 

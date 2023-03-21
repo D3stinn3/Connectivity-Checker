@@ -3,6 +3,8 @@
 from http.client import HTTPConnection
 from urllib.parse import urlparse
 
+"""Site Connectivity Check Function"""
+
 def site_iko_online(url, timeout=2):
     """Returns 'True' if the target endpoint is online.
     Raise an exception otherwise"""

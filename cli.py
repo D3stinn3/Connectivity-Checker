@@ -2,6 +2,8 @@
 
 import argparse
 
+"""The Comand Line Interface aka CLI"""
+
 def read_user_cli_args():
     """Handle CLI arguments and options"""
     parser = argparse.ArgumentParser(
